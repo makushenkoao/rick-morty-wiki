@@ -3,10 +3,11 @@ import {AppBar, Drawer, IconButton, Toolbar} from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import {ChevronLeft, Menu} from '@mui/icons-material'
 
+
+const drawerWidth = 240;
+
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    const drawerWidth = 240;
-
     return (
         <AppBar color='inherit' position='fixed' >
             <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -18,11 +19,7 @@ export const Navbar = () => {
                 <div>
                     <Link
                         to='/'
-                        style={{
-                            fontSize: window.innerWidth > 768 ? '30px': '18px',
-                            fontWeight: 'bold',
-                            textDecoration: 'none',
-                            color: 'inherit'}}
+                        style={{fontSize: '30px', fontWeight: 'bold', textDecoration: 'none', color: 'inherit'}}
                     >
                         Rick & Morty<span style={{color: 'orange', marginLeft: '6px'}}>Wiki</span></Link>
                 </div>
