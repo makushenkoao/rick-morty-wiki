@@ -26,12 +26,23 @@ export const searchCharacters = (name: string) => async (dispatch: AppDispatch) 
         dispatch(rickAndMortyActions.setErrorCharacters(e.message))
     }
 }
-
 export const paginationCharacters = (src: string) => async (dispatch: AppDispatch) => {
     try {
         dispatch(rickAndMortyActions.setIsLoadingCharacters(true))
         const { data } = await axios.get(src)
         dispatch(rickAndMortyActions.setCharacters(data))
+        dispatch(rickAndMortyActions.setIsLoadingCharacters(false))
+        dispatch(rickAndMortyActions.setErrorCharacters(''))
+    } catch (e: any) {
+        dispatch(rickAndMortyActions.setErrorCharacters(e.message))
+    }
+}
+
+export const getCharacter = (id: string | undefined) => async (dispatch: AppDispatch) => {
+    try {
+        dispatch(rickAndMortyActions.setIsLoadingCharacters(true))
+        const { data } = await axios.get('https://rickandmortyapi.com/api/character/' + id)
+        dispatch(rickAndMortyActions.setCharacter(data))
         dispatch(rickAndMortyActions.setIsLoadingCharacters(false))
         dispatch(rickAndMortyActions.setErrorCharacters(''))
     } catch (e: any) {

@@ -14,7 +14,7 @@ export const CharacterItem: FC<CharacterItemProps> = ({character}) => {
         <Card
             className='card'
         >
-            <Link to={'/:' + id}>
+            <Link to={'/' + id}>
                 <div>
                     <img src={image} alt={name} width={'100%'}/>
                 </div>
@@ -22,7 +22,6 @@ export const CharacterItem: FC<CharacterItemProps> = ({character}) => {
                     <Typography variant='h5' sx={{fontWeight: 'bold', mt: 2}}>{name}</Typography>
                 </div>
             </Link>
-
         </Card>
     );
 };
