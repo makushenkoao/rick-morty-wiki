@@ -4,6 +4,7 @@ import {ICharacter} from "../../models";
 interface RickAndMortyState {
     characters: any,
     character: ICharacter | null,
+    episodes: any
     charactersAreLoading: boolean,
     charactersAreError: string,
 }
@@ -11,6 +12,7 @@ interface RickAndMortyState {
 const initialState: RickAndMortyState = {
     characters: null,
     character: null,
+    episodes: null,
     charactersAreLoading: true,
     charactersAreError: '',
 }
@@ -49,7 +51,13 @@ export const RickAndMortySlice = createSlice({
             }
         },
 
-
+        setEpisodes(state, action: PayloadAction<any>) {
+            return {
+                ...state,
+                episodes: action.payload,
+                charactersAreLoading: false
+            }
+        },
     }
 })
 

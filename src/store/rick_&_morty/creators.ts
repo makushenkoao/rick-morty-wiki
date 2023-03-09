@@ -49,3 +49,15 @@ export const getCharacter = (id: string | undefined) => async (dispatch: AppDisp
         dispatch(rickAndMortyActions.setErrorCharacters(e.message))
     }
 }
+
+export const getAllEpisodes = () => async (dispatch: AppDispatch) => {
+    try {
+        dispatch(rickAndMortyActions.setIsLoadingCharacters(true))
+        const { data } = await axios.get('https://rickandmortyapi.com/api/episode')
+        dispatch(rickAndMortyActions.setEpisodes(data))
+        dispatch(rickAndMortyActions.setIsLoadingCharacters(false))
+        dispatch(rickAndMortyActions.setErrorCharacters(''))
+    } catch (e: any) {
+        dispatch(rickAndMortyActions.setErrorCharacters(e.message))
+    }
+}
